@@ -1,11 +1,8 @@
 {
   "name": "nodejs-cnab",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Nodejs Library for Cnab files",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mariohmol/node-cnab.git"
@@ -14,7 +11,8 @@
   "license": "ISC",
   "scripts": {
     "start": "node index.js",
-    "test": "node test/index.js"
+    "test": "node test/index.js",
+    "publish": "npm publish"
   },
   "bugs": {
     "url": "https://github.com/mariohmol/node-cnab/issues"

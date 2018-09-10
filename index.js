@@ -8,19 +8,21 @@ const generateCnab = (header, detail, trailer, cnabtype = 400, bankcode = 237) =
     const headerSpec = yaml.safeLoad(fs.readFileSync(`./node_modules/cnab_yaml/cnab${cnabtype}/${bankcode}/remessa/header_arquivo.yml`, `utf8`));
     const trailerSpec = yaml.safeLoad(fs.readFileSync(`./node_modules/cnab_yaml/cnab${cnabtype}/${bankcode}/remessa/trailer_arquivo.yml`, `utf8`));
 
-    const detailLine = makeLine(detailSpec, detail);
-    const headerLine = makeLine(headerSpec, header);
-    const trailerLine = makeLine(trailerSpec, trailer);
+    const detailInfo = makeLine(detailSpec, detail);
+    const headerInfo = makeLine(headerSpec, header);
+    const trailerInfo = makeLine(trailerSpec, trailer);
 
     const CNAB_EOL = '\r\n';
-    const data = [headerLine, detailLine, trailerLine].join(CNAB_EOL);
+    console.log(detailInfo.object)
+    const data = [headerInfo.line, detailInfo.line, trailerInfo.line].join(CNAB_EOL);
     return data;
   } catch (e) {
     console.log(e);
   }
 }
+// data_geracao
 
 module.exports = { generateCnab };
 
-
+//  date_format
 

@@ -1,3 +1,17 @@
-{
-  
-}
+  {
+    "tipo_registro": "0",
+    "tipo_operacao": "1",
+    "literal_remessa": "REMESSA",
+    "codigo_servico": "1",
+    "literal_servico": "COBRANCA",
+    "codigo_cedente": "12562475000132",
+    "razao_social": "FOO BAR LTDA",
+    "codigo_banco": "237",
+    "nome_banco": "Bradesco",
+    "data_geracao": "",
+    "brancos01": "",
+    "numero_aviso_bancario": "MX",
+    "sequencial_remessa": "1",
+    "brancos02": "",
+    "numero_sequencial": "1"
+  }
