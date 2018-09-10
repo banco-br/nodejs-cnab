@@ -6,7 +6,7 @@ const detail = JSON.parse(fs.readFileSync('test/data/cnab400/237/detalhe.json', 
 const trailer = JSON.parse(fs.readFileSync('test/data/cnab400/237/trailer.json', 'utf8'));
 
 const finalresult = generateCnab(header, detail, trailer);
-console.log(finalresult);
+// console.log(finalresult);
 fs.writeFileSync('test/example.rem', finalresult);
 
 
