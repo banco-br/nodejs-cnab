@@ -1,6 +1,6 @@
 {
   "name": "nodejs-cnab",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Nodejs Library for Cnab files",
   "main": "index.js",
   "repository": {
