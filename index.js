@@ -1,20 +1,40 @@
-const yaml = require('js-yaml');
-const fs = require('fs');
-const { makeLine } = require('./src/utils.js');
+const { makeLine, readYaml } = require('./src/utils.js');
+const BANK = {
+  bradesco: {
+    code: '237',
+    layout: {
+      400: ['header_arquivo', 'detalhe', 'trailer_arquivo']
+    }
+  },
+  bb: {
+    code: '001',
+    layout: {
+      400: ['header_arquivo', 'detalhe']
+    }
+  }
+};
 
-const generateCnab = (header, detail, trailer, cnabtype = 400, bankcode = 237) => {
+const generateCnab = (files, cnabtype = 400, bankcode = '237') => {
   try {
-    const detailSpec = yaml.safeLoad(fs.readFileSync(`./node_modules/cnab_yaml/cnab${cnabtype}/${bankcode}/remessa/detalhe.yml`, `utf8`));
-    const headerSpec = yaml.safeLoad(fs.readFileSync(`./node_modules/cnab_yaml/cnab${cnabtype}/${bankcode}/remessa/header_arquivo.yml`, `utf8`));
-    const trailerSpec = yaml.safeLoad(fs.readFileSync(`./node_modules/cnab_yaml/cnab${cnabtype}/${bankcode}/remessa/trailer_arquivo.yml`, `utf8`));
+    const yamls = [];
+    for (key in files) {
+      const layout = readYaml(`./node_modules/cnab_yaml/cnab${cnabtype}/${bankcode}/remessa/${key}.yml`);
+      yamls.push({
+        layout,
+        data: files[key]
+      });
+    }
 
-    const detailInfo = makeLine(detailSpec, detail);
-    const headerInfo = makeLine(headerSpec, header);
-    const trailerInfo = makeLine(trailerSpec, trailer);
+    const infos = yamls.map((i, index) => {
+      return makeLine(i.layout, i.data);
+    });
+
+    const infosLine = infos.map(i => {
+      return i.line
+    });
 
     const CNAB_EOL = '\r\n';
-    console.log(detailInfo.object)
-    const data = [headerInfo.line, detailInfo.line, trailerInfo.line].join(CNAB_EOL);
+    const data = infosLine.join(CNAB_EOL);
     return data;
   } catch (e) {
     console.log(e);
@@ -22,7 +42,7 @@ const generateCnab = (header, detail, trailer, cnabtype = 400, bankcode = 237) =
 }
 // data_geracao
 
-module.exports = { generateCnab };
+module.exports = { generateCnab, BANK };
 
 //  date_format
 
