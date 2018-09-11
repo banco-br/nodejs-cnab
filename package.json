@@ -1,23 +1,23 @@
 {
   "name": "nodejs-cnab",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "Nodejs Library for Cnab files",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mariohmol/node-cnab.git"
+    "url": "git+https://github.com/mariohmol/nodejs-cnab.git"
   },
   "author": "Mario Mol <mariohmol@gmail.com> (http://rama.net.br)",
   "license": "ISC",
   "scripts": {
     "start": "node index.js",
-    "test": "node test/index.js",
+    "test": "mocha",
     "publish": "npm publish"
   },
   "bugs": {
-    "url": "https://github.com/mariohmol/node-cnab/issues"
+    "url": "https://github.com/mariohmol/nodejs-cnab/issues"
   },
-  "homepage": "https://github.com/mariohmol/node-cnab#readme",
+  "homepage": "https://github.com/mariohmol/nodejs-cnab#readme",
   "dependencies": {
     "cnab_yaml": "git+https://github.com/andersondanilo/cnab_yaml.git",
     "js-yaml": "^3.12.0"

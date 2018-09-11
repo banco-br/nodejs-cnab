@@ -22,6 +22,26 @@ const makeLine = function (layout, data) {
   return { line, object };
 }
 
+const readLine = function (layout, data) {
+  let line = '';
+  const object = {};
+  if (layout) {
+    Object.keys(layout).forEach(key => {
+      const item = layout[key];
+      let value;
+      if (key in data && data[key]) {
+        value = data[key];
+      } else {
+        value = item.default;
+      }
+      const baseValue = value ? value + '' : '';
+      const pictures = usePicture(item, baseValue);
+      object[key] = pictures;
+      line += pictures;
+    });
+  }
+  return { line, object };
+}
 
 /**
  * 
@@ -135,4 +155,4 @@ const readYaml = function (filename) {
   }
 }
 
-module.exports = { makeLine, readYaml }
+module.exports = { makeLine, readYaml, readLine }
