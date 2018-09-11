@@ -1,5 +1,4 @@
-# node-cnab
-
+# nodejs-cnab
 
 Finally a nodejs lib for CNAB and bank communication in brazil.
 
@@ -14,6 +13,7 @@ Working test example for Bradesco, needs work on other banks (see issues)
 
 Other references:
 
+* https://github.com/s2way/cnab240-nodejs
 * https://github.com/kivanio/brcobranca
 * https://github.com/programadormarin/remessa-bradesco
 * 
