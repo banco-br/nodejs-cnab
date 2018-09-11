@@ -1,20 +1,24 @@
+const yaml = require('js-yaml');
+const fs = require('fs');
 
 const makeLine = function (layout, data) {
   let line = '';
   const object = {};
-  Object.keys(layout).forEach(key => {
-    const item = layout[key];
-    let value;
-    if (key in data && data[key]) {
-      value = data[key];
-    } else {
-      value = item.default;
-    }
-    const baseValue = value ? value + '' : '';
-    const pictures = usePicture(item, baseValue);
-    object[key] = pictures;
-    line += pictures;
-  });
+  if (layout) {
+    Object.keys(layout).forEach(key => {
+      const item = layout[key];
+      let value;
+      if (key in data && data[key]) {
+        value = data[key];
+      } else {
+        value = item.default;
+      }
+      const baseValue = value ? value + '' : '';
+      const pictures = usePicture(item, baseValue);
+      object[key] = pictures;
+      line += pictures;
+    });
+  }
   return { line, object };
 }
 
@@ -25,20 +29,20 @@ const makeLine = function (layout, data) {
  * 
  */
 const usePicture = function (item, value = '') {
-  const { picture} = item
+  const { picture } = item
   if (picture.indexOf('V9') > 0) {
     const out = regexPicture(/9\((\w+?)\)/g, picture)
     return formatCurrency(value, out[0], out[1]);
   }
   else if (picture.startsWith('9')) {
     const out = regexPicture(/9\((\w+?)\)/g, picture);
-    if(item.date_format){
-      return formatDate(value,out[0], item.date_format);
-    }else {
-      return formatNumber(value,out[0]);
+    if (item.date_format) {
+      return formatDate(value, out[0], item.date_format);
+    } else {
+      return formatNumber(value, out[0]);
     }
-    
-   
+
+
   }
   else if (picture.startsWith('X')) {
     const out = regexPicture(/X\((\w+?)\)/g, picture);
@@ -66,7 +70,7 @@ const regexPicture = (exp, picture) => {
  * caracteres especiais (ex.: “Ç”, “?”,, etc) e 
  * acentuação gráfica (ex.: “Á”, “É”, “Ê”, etc) e os campos não utiliza dos deverão ser preenchidos com brancos.
  * */
-const formatText = function(value, size){
+const formatText = function (value, size) {
   value = value.replace(/[^a-zA-Z ]/g, "")
   while (value.length < size) {
     value = value + ' ';
@@ -80,7 +84,7 @@ const formatText = function(value, size){
 * @param {*} picture 
 * @param {*} value 
 */
-const formatNumber = function(value, size){
+const formatNumber = function (value, size) {
   // value = value.replace(/[^0-9]/g, "")
   while (value.length < size) {
     value = '0' + value;
@@ -89,7 +93,7 @@ const formatNumber = function(value, size){
 }
 
 
-const formatDate = function(value, size){
+const formatDate = function (value, size) {
   // if(!value){
   //   return new Date()
   // }
@@ -101,10 +105,10 @@ const formatDate = function(value, size){
   return value;
 }
 
-      
+
 
 const formatCurrency = function (value, number, decimal) {
-  if(!value){
+  if (!value) {
     value = '';
   }
   value += '';
@@ -122,4 +126,13 @@ const formatCurrency = function (value, number, decimal) {
   return vals[0] + vals[1];
 }
 
-module.exports = { makeLine }
+const readYaml = function (filename) {
+  try {
+    return yaml.safeLoad(fs.readFileSync(filename, `utf8`));
+  } catch (e) {
+    console.log(e)
+    return null;
+  }
+}
+
+module.exports = { makeLine, readYaml }
