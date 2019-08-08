@@ -10,7 +10,7 @@
   "author": "Mario Mol <mariohmol@gmail.com>",
   "license": "ISC",
   "scripts": {
-    "start": "node index.js",
+    "start": "ts-node index",
     "test": "mocha",
     "publish": "npm publish"
   },
@@ -20,10 +20,13 @@
   "homepage": "https://github.com/mariohmol/nodejs-cnab#readme",
   "dependencies": {
     "cnab_yaml": "git+https://github.com/andersondanilo/cnab_yaml.git",
-    "js-yaml": "^3.12.0"
+    "js-yaml": "^3.13.1"
   },
   "devDependencies": {
+    "@types/node": "^12.7.1",
     "chai": "^4.1.2",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
   }
 }

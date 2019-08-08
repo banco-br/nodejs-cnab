@@ -22,3 +22,12 @@ Other references:
 * https://github.com/andersondanilo/CnabPHP/wiki/Criando-um-arquivo-de-remessa
 * https://github.com/developers-vitta/nodenab
 * https://github.com/andersondanilo/cnab_yaml
+
+
+# Contribute
+
+```sh
+npm i -g ts-node
+npm i
+npm start
+```

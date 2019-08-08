@@ -1,5 +1,5 @@
-const yaml = require('js-yaml');
-const fs = require('fs');
+import * as yaml from 'js-yaml';
+import * as fs from 'fs';
 
 const makeLine = function (layout, data) {
   let line = '';
@@ -57,7 +57,7 @@ const usePicture = function (item, value = '') {
   else if (picture.startsWith('9')) {
     const out = regexPicture(/9\((\w+?)\)/g, picture);
     if (item.date_format) {
-      return formatDate(value, out[0], item.date_format);
+      return formatDate(value, out[0]); // , item.date_format
     } else {
       return formatNumber(value, out[0]);
     }
@@ -155,4 +155,4 @@ const readYaml = function (filename) {
   }
 }
 
-module.exports = { makeLine, readYaml, readLine }
+export { makeLine, readYaml, readLine }

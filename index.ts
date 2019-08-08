@@ -1,4 +1,4 @@
-const { makeLine, readYaml } = require('./src/utils.js');
+import { makeLine, readYaml, readLine } from './src/utils';
 
 /**
  * ARQUIVO REMESSA
@@ -9,7 +9,7 @@ const { makeLine, readYaml } = require('./src/utils.js');
 const generateRemessaCnab = (files, cnabtype = 400, bankcode = '237') => {
   try {
     const yamls = [];
-    for (key in files) {
+    for (const key in files) {
       const value = files[key];
       if (value.forEach) {
         value.forEach(v => {
@@ -55,7 +55,7 @@ const generateRemessaCnab = (files, cnabtype = 400, bankcode = '237') => {
 const parseRemessaCnab = (files, cnabtype = 400, bankcode = '237') => {
   try {
     const yamls = [];
-    for (key in files) {
+    for (const key in files) {
       const value = files[key];
       if (value.forEach) {
         value.forEach(v => {
@@ -91,6 +91,6 @@ const parseRemessaCnab = (files, cnabtype = 400, bankcode = '237') => {
   }
 }
 
-const BANK = require('./src/const.js');
+import { BANK } from './src/const';
 
-module.exports = { generateRemessaCnab, parseRemessaCnab, BANK };
+export { generateRemessaCnab, parseRemessaCnab, BANK };
