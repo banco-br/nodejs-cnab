@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/mariohmol/nodejs-cnab#readme",
   "dependencies": {
-    "cnab_yaml": "git+https://github.com/banco-br/cnab_yaml.git",
+    "@banco-br/cnab_yaml": "^2.0.0",
     "js-yaml": "^3.13.1"
   },
   "devDependencies": {

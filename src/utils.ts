@@ -1,25 +1,28 @@
 import * as yaml from 'js-yaml';
 import * as fs from 'fs';
 
+
 const makeLine = function (layout, data) {
-  let line = '';
   const object = {};
   if (layout) {
+    let index = 0;
     Object.keys(layout).forEach(key => {
       const item = layout[key];
-      let value;
-      if (key in data && data[key]) {
-        value = data[key];
-      } else {
-        value = item.default;
+      if (item.pos) {
+        const start = item.pos[0] - 1; // yml começa no 1 e array em 0
+        const length = item.pos[1] - item.pos[0] + 1;
+        if (data) {
+          object[key] = data.substr(start, length) || item.default;
+        } else {
+          console.warn('Nao tem data', data);
+        }
       }
-      const baseValue = value ? value + '' : '';
-      const pictures = usePicture(item, baseValue);
-      object[key] = pictures;
-      line += pictures;
+      else {
+        console.warn('Nao tem posicao pra key', key);
+      }
     });
   }
-  return { line, object };
+  return object;
 }
 
 const readLine = function (layout, data) {
@@ -148,7 +151,7 @@ const readYaml = function (filename) {
   try {
     return yaml.safeLoad(fs.readFileSync(filename, `utf8`));
   } catch (e) {
-    console.log(`readYaml`, e)
+    console.error(`readYaml`, e)
     return null;
   }
 }

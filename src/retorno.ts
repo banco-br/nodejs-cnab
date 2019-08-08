@@ -1,4 +1,5 @@
 import { makeLine, readYaml } from './utils';
+import { CNAB_YAML_DIR } from './const';
 
 /**
  * ARQUIVO RETORNO
@@ -6,43 +7,41 @@ import { makeLine, readYaml } from './utils';
  * @param {*} cnabtype 
  * @param {*} bankcode 
  */
-export const parseRemessaCnab = (files, cnabtype = 400, bankcode = '237') => {
+export const parseRemessaCnab = (files, cnabtype = 400, bankcode = '237', retorno) => {
   try {
     const yamls = [];
-    console.log(files)
+    const retornoLines = retorno.split('\n');
+    let index = 0
     for (const key in files) {
       const value = files[key];
+      if (value.indexOf('codigo') === 0) {
+        continue;
+      }
       if (value.forEach) {
         value.forEach(v => {
-          const layout = readYaml(`./node_modules/cnab_yaml/cnab${cnabtype}/${bankcode}/retorno/${key}.yml`);
+          const layout = readYaml(CNAB_YAML_DIR + `/cnab${cnabtype}/${bankcode}/retorno/${value}.yml`);
           yamls.push({
             layout,
-            data: v
+            data: retornoLines[index]
           });
         });
-
       } else {
-        const layout = readYaml(`./node_modules/cnab_yaml/cnab${cnabtype}/${bankcode}/retorno/${key}.yml`);
+        const layout = readYaml(CNAB_YAML_DIR + `/cnab${cnabtype}/${bankcode}/retorno/${value}.yml`);
         yamls.push({
           layout,
-          data: value
+          data: retornoLines[index]
         });
       }
+      index++;
     }
 
     const infos = yamls.map((i, index) => {
-      console.log(`infos`, i.layout, i.data);
-      return makeLine(i.layout, i.data);
+      const line = makeLine(i.layout, i.data);
+      return line;
     });
 
-    const infosLine = infos.map(i => {
-      return i.line
-    });
-
-    const CNAB_EOL = '\r\n';
-    const data = infosLine.join(CNAB_EOL);
-    return data;
+    return infos;
   } catch (e) {
-    console.log(`parseRemessaCnab: `, e);
+    console.error(`parseRemessaCnab: `, e);
   }
 }

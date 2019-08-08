@@ -10,39 +10,49 @@ export const exampleRemessa = `02RETORNO01COBRANCA       00000000000004628596PAG
 
 describe('Retorno CNAB 400', function () {
   
-  it('Bradesco 237', () => {
-    const filesLayout = makeFilesLayout(BANK.bradesco.remessa[cnabCode], BANK.bradesco.code, cnabCode);
-    const finalresult = parseRemessaCnab(filesLayout, cnabCode, BANK.bradesco.code);
-    console.log(finalresult, 'RETORNO')
-    expect(finalresult.length).to.be.greaterThan(700);
-    fs.writeFileSync(`test/gen/retorno-${cnabCode}-${BANK.bradesco.code}.json`, finalresult);
-  });
-  /* TODO: 
-  it('BB 0001', () => {
-    const filesLayout = makeFilesLayoutRetorno(BANK.bb.retorno[cnabCode], BANK.bb.code, cnabCode);
-    const finalresult = parseRemessaCnab(filesLayout, cnabCode, BANK.bb.code);
-    expect(finalresult.length).to.be.greaterThan(800);
+  
+  it('BB 001', () => {
+    const finalresult = parseRemessaCnab(BANK.bb.retorno[cnabCode], cnabCode, BANK.bb.code, exampleRemessa);
+    expect(finalresult.length).to.be.greaterThan(2);
     fs.writeFileSync(`test/gen/retorno-${cnabCode}-${BANK.bb.code}.json`, finalresult);
   });
+  
   it('Santander 033', () => {
-    const filesLayout = makeFilesLayoutRetorno(BANK.santander.remessa[cnabCode], BANK.santander.code, cnabCode);
-    const finalresult = parseRemessaCnab(filesLayout, cnabCode, BANK.santander.code);
-    expect(finalresult.length).to.be.greaterThan(800);
+    const finalresult = parseRemessaCnab(BANK.santander.retorno[cnabCode], cnabCode, BANK.santander.code, exampleRemessa);
+    expect(finalresult.length).to.be.greaterThan(1);
     fs.writeFileSync(`test/gen/retorno-${cnabCode}-${BANK.santander.code}.json`, finalresult);
   });
+
+  it('Banrisul 041', () => {
+    const finalresult = parseRemessaCnab(BANK.banrisul.retorno[cnabCode], cnabCode, BANK.banrisul.code, exampleRemessa);
+    expect(finalresult.length).to.be.greaterThan(2);
+    fs.writeFileSync(`test/gen/retorno-${cnabCode}-${BANK.banrisul.code}.json`, finalresult);
+  });
+
   it('Caixa 104', () => {
-    const filesLayout = makeFilesLayoutRetorno(BANK.caixa.remessa[cnabCode], BANK.caixa.code, cnabCode);
-    const finalresult = parseRemessaCnab(filesLayout, cnabCode, BANK.caixa.code);
-    expect(finalresult.length).to.be.greaterThan(800);
+    const finalresult = parseRemessaCnab(BANK.caixa.retorno[cnabCode], cnabCode, BANK.caixa.code, exampleRemessa);
+    expect(finalresult.length).to.be.greaterThan(2);
     fs.writeFileSync(`test/gen/retorno-${cnabCode}-${BANK.caixa.code}.json`, finalresult);
   });
+
+  it('Bradesco 237', () => {
+    const finalresult = parseRemessaCnab(BANK.bradesco.retorno[cnabCode], cnabCode, BANK.bradesco.code, exampleRemessa);
+    expect(finalresult.length).to.be.greaterThan(2);
+    fs.writeFileSync(`test/gen/retorno-${cnabCode}-${BANK.bradesco.code}.json`, finalresult);
+  });
+
+  it('Itaú 341', () => {
+    const finalresult = parseRemessaCnab(BANK.itau.retorno[cnabCode], cnabCode, BANK.itau.code, exampleRemessa);
+    expect(finalresult.length).to.be.greaterThan(2);
+    fs.writeFileSync(`test/gen/retorno-${cnabCode}-${BANK.itau.code}.json`, finalresult);
+  });
+
   it('Bancoob 756', () => {
-    const filesLayout = makeFilesLayoutRetorno(BANK.bancoob.remessa[cnabCode], BANK.bancoob.code, cnabCode);
-    const finalresult = parseRemessaCnab(filesLayout, cnabCode, BANK.bancoob.code);
-    expect(finalresult.length).to.be.greaterThan(800);
+    const finalresult = parseRemessaCnab(BANK.bancoob.retorno[cnabCode], cnabCode, BANK.bancoob.code, exampleRemessa);
+    expect(finalresult.length).to.be.greaterThan(2);
     fs.writeFileSync(`test/gen/retorno-${cnabCode}-${BANK.bancoob.code}.json`, finalresult);
   });
-  */
+ /* TODO:  */
 });
 
 const makeFilesLayoutRetorno = (files, bankCode, cnabCode) => {
@@ -53,11 +63,4 @@ const makeFilesLayoutRetorno = (files, bankCode, cnabCode) => {
   return filesLayout;
 };
 
-const makeFilesLayout = (files, bankCode, cnabCode) => {
-  const filesLayout = {};
-  files.map(f => {
-    filesLayout[f] = JSON.parse(fs.readFileSync(`test/data/cnab${cnabCode}/${bankCode}/${f}.json`, 'utf8'));
-  });
-  return filesLayout;
-};
 
