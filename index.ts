@@ -41,7 +41,7 @@ const generateRemessaCnab = (files, cnabtype = 400, bankcode = '237') => {
     const data = infosLine.join(CNAB_EOL);
     return data;
   } catch (e) {
-    console.log(e);
+    console.log(`generateRemessaCnab`, e);
   }
 }
 
@@ -87,7 +87,7 @@ const parseRemessaCnab = (files, cnabtype = 400, bankcode = '237') => {
     const data = infosLine.join(CNAB_EOL);
     return data;
   } catch (e) {
-    console.log(e);
+    console.log(`parseRemessaCnab: `, e);
   }
 }
 

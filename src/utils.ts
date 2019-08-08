@@ -61,8 +61,6 @@ const usePicture = function (item, value = '') {
     } else {
       return formatNumber(value, out[0]);
     }
-
-
   }
   else if (picture.startsWith('X')) {
     const out = regexPicture(/X\((\w+?)\)/g, picture);
@@ -150,7 +148,7 @@ const readYaml = function (filename) {
   try {
     return yaml.safeLoad(fs.readFileSync(filename, `utf8`));
   } catch (e) {
-    console.log(e)
+    console.log(`readYaml`, e)
     return null;
   }
 }

@@ -1,4 +1,5 @@
 node_modules
 test/*rem
+test/gen
 typings/**
 package-lock.json
