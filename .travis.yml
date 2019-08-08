@@ -3,7 +3,7 @@ node_js:
   - "10.9"
 
 before_install:
-  - npm install -g typescript webdriver-manager ng-packagr @angular/cli
+  - npm install mocha chai ts-node typings -g 
   - npm run typings
 
 install:

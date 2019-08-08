@@ -37,7 +37,7 @@ npm start
 ## Tests
 
 ```
-npm install mocha chai ts-node -g typings
+npm install mocha chai ts-node typings -g 
 typings install dt~mocha --global --save
 npm run typings
 ```
