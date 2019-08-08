@@ -2,7 +2,7 @@
 
 Finally a nodejs lib for CNAB and bank communication in brazil.
 
-`npm i node-cnab`
+`npm i --save nodejs-cnab`
 
 This project uses :
 
