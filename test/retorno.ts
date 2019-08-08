@@ -12,45 +12,48 @@ describe('Retorno CNAB 400', function () {
   
   
   it('BB 001', () => {
-    const finalresult = parseRemessaCnab(BANK.bb.retorno[cnabCode], cnabCode, BANK.bb.code, exampleRemessa);
+    const retorno = readRetorno(cnabCode, BANK.bb.code);
+    const finalresult = parseRemessaCnab(BANK.bb.retorno[cnabCode], cnabCode, BANK.bb.code, retorno);
     expect(finalresult.length).to.be.greaterThan(2);
-    fs.writeFileSync(`test/gen/retorno-${cnabCode}-${BANK.bb.code}.json`, finalresult);
+    fs.writeFileSync(`test/gen/retorno-${cnabCode}-${BANK.bb.code}.json`, JSON.stringify(finalresult, null, 2));
   });
   
   it('Santander 033', () => {
     const finalresult = parseRemessaCnab(BANK.santander.retorno[cnabCode], cnabCode, BANK.santander.code, exampleRemessa);
     expect(finalresult.length).to.be.greaterThan(1);
-    fs.writeFileSync(`test/gen/retorno-${cnabCode}-${BANK.santander.code}.json`, finalresult);
+    fs.writeFileSync(`test/gen/retorno-${cnabCode}-${BANK.santander.code}.json`, JSON.stringify(finalresult, null, 2));
   });
 
   it('Banrisul 041', () => {
     const finalresult = parseRemessaCnab(BANK.banrisul.retorno[cnabCode], cnabCode, BANK.banrisul.code, exampleRemessa);
     expect(finalresult.length).to.be.greaterThan(2);
-    fs.writeFileSync(`test/gen/retorno-${cnabCode}-${BANK.banrisul.code}.json`, finalresult);
+    fs.writeFileSync(`test/gen/retorno-${cnabCode}-${BANK.banrisul.code}.json`, JSON.stringify(finalresult, null, 2));
   });
 
   it('Caixa 104', () => {
     const finalresult = parseRemessaCnab(BANK.caixa.retorno[cnabCode], cnabCode, BANK.caixa.code, exampleRemessa);
     expect(finalresult.length).to.be.greaterThan(2);
-    fs.writeFileSync(`test/gen/retorno-${cnabCode}-${BANK.caixa.code}.json`, finalresult);
+    fs.writeFileSync(`test/gen/retorno-${cnabCode}-${BANK.caixa.code}.json`, JSON.stringify(finalresult, null, 2));
   });
 
   it('Bradesco 237', () => {
-    const finalresult = parseRemessaCnab(BANK.bradesco.retorno[cnabCode], cnabCode, BANK.bradesco.code, exampleRemessa);
+    const retorno = readRetorno(cnabCode, BANK.bb.code);
+    const finalresult = parseRemessaCnab(BANK.bradesco.retorno[cnabCode], cnabCode, BANK.bradesco.code, retorno);
     expect(finalresult.length).to.be.greaterThan(2);
-    fs.writeFileSync(`test/gen/retorno-${cnabCode}-${BANK.bradesco.code}.json`, finalresult);
+    fs.writeFileSync(`test/gen/retorno-${cnabCode}-${BANK.bradesco.code}.json`, JSON.stringify(finalresult, null, 2));
   });
 
   it('Itaú 341', () => {
     const finalresult = parseRemessaCnab(BANK.itau.retorno[cnabCode], cnabCode, BANK.itau.code, exampleRemessa);
     expect(finalresult.length).to.be.greaterThan(2);
-    fs.writeFileSync(`test/gen/retorno-${cnabCode}-${BANK.itau.code}.json`, finalresult);
+    fs.writeFileSync(`test/gen/retorno-${cnabCode}-${BANK.itau.code}.json`, JSON.stringify(finalresult, null, 2));
   });
 
   it('Bancoob 756', () => {
-    const finalresult = parseRemessaCnab(BANK.bancoob.retorno[cnabCode], cnabCode, BANK.bancoob.code, exampleRemessa);
+    const retorno = readRetorno(cnabCode, BANK.bb.code);
+    const finalresult = parseRemessaCnab(BANK.bancoob.retorno[cnabCode], cnabCode, BANK.bancoob.code, retorno);
     expect(finalresult.length).to.be.greaterThan(2);
-    fs.writeFileSync(`test/gen/retorno-${cnabCode}-${BANK.bancoob.code}.json`, finalresult);
+    fs.writeFileSync(`test/gen/retorno-${cnabCode}-${BANK.bancoob.code}.json`, JSON.stringify(finalresult, null, 2));
   });
  /* TODO:  */
 });
@@ -62,5 +65,10 @@ const makeFilesLayoutRetorno = (files, bankCode, cnabCode) => {
   });
   return filesLayout;
 };
+
+const readRetorno = (cnabCode, bankCode) =>{
+  return fs.readFileSync(`test/data/cnab${cnabCode}/${bankCode}/example-${cnabCode}-${bankCode}.rem`, 'utf8');
+};
+
 
 
