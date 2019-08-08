@@ -5,19 +5,19 @@ const cnabCode = 400;
 
 describe('Remessa CNAB 400', function () {
 
-  it('Bradesco', () => {
-    const filesLayout = makeFilesLayout(BANK.bradesco.remessa[cnabCode], BANK.bradesco.code, cnabCode);
-    const finalresult = generateRemessaCnab(filesLayout, cnabCode, BANK.bradesco.code);
-    expect(finalresult.length).to.be.greaterThan(800);
-    fs.writeFileSync(`test/gen/example-${cnabCode}-${BANK.bradesco.code}.rem`, finalresult);
-  });
+  // it('Bradesco', () => {
+  //   const filesLayout = makeFilesLayout(BANK.bradesco.remessa[cnabCode], BANK.bradesco.code, cnabCode);
+  //   const finalresult = generateRemessaCnab(filesLayout, cnabCode, BANK.bradesco.code);
+  //   expect(finalresult.length).to.be.greaterThan(800);
+  //   fs.writeFileSync(`test/gen/example-${cnabCode}-${BANK.bradesco.code}.rem`, finalresult);
+  // });
 
-  it('BB', () => {
-    const filesLayout = makeFilesLayout(BANK.bb.remessa[cnabCode], BANK.bb.code, cnabCode);
-    const finalresult = generateRemessaCnab(filesLayout, cnabCode, BANK.bb.code);
-    expect(finalresult.length).to.be.greaterThan(800);
-    fs.writeFileSync(`test/gen/example-${cnabCode}-${BANK.bb.code}.rem`, finalresult);
-  });
+  // it('BB', () => {
+  //   const filesLayout = makeFilesLayout(BANK.bb.remessa[cnabCode], BANK.bb.code, cnabCode);
+  //   const finalresult = generateRemessaCnab(filesLayout, cnabCode, BANK.bb.code);
+  //   expect(finalresult.length).to.be.greaterThan(800);
+  //   fs.writeFileSync(`test/gen/example-${cnabCode}-${BANK.bb.code}.rem`, finalresult);
+  // });
 
   /**
    * TODO
