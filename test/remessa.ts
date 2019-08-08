@@ -11,6 +11,9 @@ describe('Remessa CNAB 400', function () {
     expect(finalresult.length).to.be.greaterThan(800);
     fs.writeFileSync(`test/example-${cnabCode}-${BANK.bradesco.code}.rem`, finalresult);
   });
+  /**
+   * TODO
+   
   it('BB', () => {
     const filesLayout = makeFilesLayout(BANK.bb.remessa[cnabCode], BANK.bb.code, cnabCode);
     const finalresult = generateRemessaCnab(filesLayout, cnabCode, BANK.bb.code);
@@ -35,6 +38,7 @@ describe('Remessa CNAB 400', function () {
     expect(finalresult.length).to.be.greaterThan(800);
     fs.writeFileSync(`test/example-${cnabCode}-${BANK.bancoob.code}.rem`, finalresult);
   });
+  */
 });
 
 const makeFilesLayout = (files, bankCode, cnabCode) => {

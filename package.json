@@ -11,8 +11,9 @@
   "license": "ISC",
   "scripts": {
     "start": "ts-node index",
-    "test": "mocha",
-    "publish": "npm publish"
+    "test": "mocha -r ts-node/register test/**.ts",
+    "typings": "typings install",
+    "publish-npm": "npm publish"
   },
   "bugs": {
     "url": "https://github.com/mariohmol/nodejs-cnab/issues"
@@ -23,10 +24,13 @@
     "js-yaml": "^3.13.1"
   },
   "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.7",
     "@types/node": "^12.7.1",
-    "chai": "^4.1.2",
+    "chai": "^4.2.0",
     "mocha": "^5.2.0",
     "ts-node": "^8.3.0",
-    "typescript": "^3.5.3"
+    "typescript": "^3.5.3",
+    "typings": "^2.1.1"
   }
 }

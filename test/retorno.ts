@@ -16,6 +16,7 @@ describe('Retorno CNAB 400', function () {
     expect(finalresult.length).to.be.greaterThan(800);
     fs.writeFileSync(`test/retorno-${cnabCode}-${BANK.bradesco.code}.json`, finalresult);
   });
+  /* TODO: 
   it('BB 0001', () => {
     const filesLayout = makeFilesLayout(BANK.bb.retorno[cnabCode], BANK.bb.code, cnabCode);
     const finalresult = parseRemessaCnab(filesLayout, cnabCode, BANK.bb.code);
@@ -40,6 +41,7 @@ describe('Retorno CNAB 400', function () {
     expect(finalresult.length).to.be.greaterThan(800);
     fs.writeFileSync(`test/retorno-${cnabCode}-${BANK.bancoob.code}.json`, finalresult);
   });
+  */
 });
 
 const makeFilesLayout = (files, bankCode, cnabCode) => {
