@@ -1,0 +1,21 @@
+  {
+    "tipo_registro": "0",
+    "tipo_operacao": "1",
+    "literal_remessa": "REMESSA",
+    "codigo_servico": "1",
+    "literal_servico": "COBRANCA",
+    "agencia": "123",
+    "agencia_dv": "1",
+    "conta": "134567",
+    "conta_dv": "1",
+    "zeros01": "",
+    "nome_empresa": "FOO BAR LTDA",
+    "codigo_banco": "237",
+    "nome_banco": "Bradesco",
+    "data_geracao": "",
+    "numero_sequencial": "1",
+    "brancos01": "",
+    "convenio_lider": "12562",
+    "brancos02": "",
+    "registro_sequencial": "12562"
+  }
