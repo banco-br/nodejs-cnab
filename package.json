@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mariohmol/nodejs-cnab.git"
+    "url": "git+https://github.com/banco-br/nodejs-cnab.git"
   },
   "author": "Mario Mol <mariohmol@gmail.com>",
   "license": "ISC",
@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/mariohmol/nodejs-cnab#readme",
   "dependencies": {
-    "cnab_yaml": "git+https://github.com/andersondanilo/cnab_yaml.git",
+    "cnab_yaml": "git+https://github.com/banco-br/cnab_yaml.git",
     "js-yaml": "^3.13.1"
   },
   "devDependencies": {
