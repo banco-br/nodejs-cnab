@@ -31,3 +31,11 @@ npm i -g ts-node
 npm i
 npm start
 ```
+
+## Tests
+
+```
+npm install mocha chai ts-node -g typings
+typings install dt~mocha --global --save
+npm run typings
+```

@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - "10.9"
+
+before_install:
+  - npm install -g typescript webdriver-manager ng-packagr @angular/cli
+  - npm run typings
+
+install:
+  - npm install
