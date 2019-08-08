@@ -7,7 +7,7 @@ describe('Remessa CNAB 400', function () {
   
   it('Bradesco', () => {
     const filesLayout = makeFilesLayout(BANK.bradesco.remessa[cnabCode], BANK.bradesco.code, cnabCode);
-    const finalresult = generateRemessaCnab(filesLayout, cnabCode, BANK.bb.code);
+    const finalresult = generateRemessaCnab(filesLayout, cnabCode, BANK.bradesco.code);
     expect(finalresult.length).to.be.greaterThan(800);
     fs.writeFileSync(`test/example-${cnabCode}-${BANK.bradesco.code}.rem`, finalresult);
   });
