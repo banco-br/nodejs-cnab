@@ -1,4 +1,5 @@
 import { readYaml, readLine } from './utils';
+import { CNAB_YAML_DIR } from './const';
 
 /**
  * ARQUIVO REMESSA
@@ -13,7 +14,7 @@ export const generateRemessaCnab = (files, cnabtype = 400, bankcode = '237') => 
       const value = files[key];
       if (value.forEach) {
         value.forEach(v => {
-          const layout = readYaml(`./node_modules/cnab_yaml/cnab${cnabtype}/${bankcode}/remessa/${key}.yml`);
+          const layout = readYaml(CNAB_YAML_DIR + `/cnab${cnabtype}/${bankcode}/remessa/${key}.yml`);
           yamls.push({
             layout,
             data: v
@@ -21,7 +22,7 @@ export const generateRemessaCnab = (files, cnabtype = 400, bankcode = '237') => 
         });
 
       } else {
-        const layout = readYaml(`./node_modules/cnab_yaml/cnab${cnabtype}/${bankcode}/remessa/${key}.yml`);
+        const layout = readYaml(CNAB_YAML_DIR + `/cnab${cnabtype}/${bankcode}/remessa/${key}.yml`);
         yamls.push({
           layout,
           data: value
@@ -30,7 +31,6 @@ export const generateRemessaCnab = (files, cnabtype = 400, bankcode = '237') => 
     }
 
     const infos = yamls.map((i, index) => {
-      console.log(i);
       return readLine(i.layout, i.data);
     });
 
@@ -42,6 +42,6 @@ export const generateRemessaCnab = (files, cnabtype = 400, bankcode = '237') => 
     const data = infosLine.join(CNAB_EOL);
     return data;
   } catch (e) {
-    console.log(`generateRemessaCnab`, e);
+    console.error(`generateRemessaCnab`, e);
   }
 }
