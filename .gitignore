@@ -1,4 +1,5 @@
 node_modules
-test/gen
+test/gen/*.rem
+test/gen/*.json
 typings/**
 package-lock.json

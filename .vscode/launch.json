@@ -10,6 +10,8 @@
       "name": "Node CNAB Mocha Tests",
       "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
       "args": [
+        "--timeout",
+        "9999",
         "-r",
         "ts-node/register",
         "${workspaceFolder}/test/*.ts"
