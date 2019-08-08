@@ -12,10 +12,10 @@
       "args": [
         "-r",
         "ts-node/register",
-        "--timeout",
-        "${workspaceFolder}/test/**.ts*"
+        "${workspaceFolder}/test/*.ts"
       ],
-      "internalConsoleOptions": "openOnSessionStart"
+      "internalConsoleOptions": "openOnSessionStart",
+      "cwd": "${workspaceFolder}"
     }
   ]
 }
