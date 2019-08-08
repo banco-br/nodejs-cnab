@@ -14,7 +14,7 @@ describe('Retorno CNAB 400', function () {
     const filesLayout = makeFilesLayout(BANK.bradesco.remessa[cnabCode], BANK.bradesco.code, cnabCode);
     const finalresult = parseRemessaCnab(filesLayout, cnabCode, BANK.bradesco.code);
     console.log(finalresult, 'RETORNO')
-    expect(finalresult.length).to.be.greaterThan(800);
+    expect(finalresult.length).to.be.greaterThan(700);
     fs.writeFileSync(`test/gen/retorno-${cnabCode}-${BANK.bradesco.code}.json`, finalresult);
   });
   /* TODO: 
