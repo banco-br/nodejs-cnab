@@ -1,5 +1,7 @@
 # nodejs-cnab
 
+[![Build Status](https://travis-ci.com/mariohmol/nodejs-cnab.svg?branch=master)](https://travis-ci.com/mariohmol/nodejs-cnab)
+
 Finally a nodejs lib for CNAB and bank communication in brazil.
 
 `npm i --save nodejs-cnab`
