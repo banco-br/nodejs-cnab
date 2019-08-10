@@ -92,7 +92,6 @@ const regexPicture = (exp, picture) => {
  * acentuação gráfica (ex.: “Á”, “É”, “Ê”, etc) e os campos não utiliza dos deverão ser preenchidos com brancos.
  * */
 const formatText = function (value, size) {
-  value = value.replace(/[^a-zA-Z ]/g, "")
   while (value.length < size) {
     value = value + ' ';
   }
