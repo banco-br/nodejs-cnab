@@ -14,7 +14,7 @@ export const parseRemessaCnab = (
   retorno: { split: (arg0: string) => void }
 ) => {
   try {
-    const yamls = []
+    const yamls: any = []
     const retornoLines: any = retorno.split('\n')
     let index = 0
     for (const key in files) {
@@ -42,7 +42,7 @@ export const parseRemessaCnab = (
       index++
     }
 
-    const infos = yamls.map((i, index) => {
+    const infos = yamls.map((i: any, index: any) => {
       const line = makeLine(i.layout, i.data)
       return line
     })
