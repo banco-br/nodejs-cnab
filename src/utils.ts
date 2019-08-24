@@ -1,7 +1,6 @@
-import * as pad from 'pad'
-import * as fs from 'fs'
-import * as yaml from 'js-yaml'
-// const yaml = require('js-yaml')
+const pad = require('pad')
+const fs = require('fs')
+const yaml = require('js-yaml')
 
 export function makeLine(layout: any, data: any) {
   const object: any = {}
