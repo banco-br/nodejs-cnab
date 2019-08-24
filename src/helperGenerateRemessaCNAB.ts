@@ -1,6 +1,6 @@
 // tslint:disable:variable-name
 
-const { generateRemessaCnab } = require('./nodejs-cnab')
+import { generateRemessaCnab } from './remessa'
 const { isCNPJ, isCPF } = require('brazilian-values')
 const dayjs = require('dayjs')
 
