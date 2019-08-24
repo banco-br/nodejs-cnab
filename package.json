@@ -1,7 +1,7 @@
 {
   "name": "@banco-br/nodejs-cnab",
-  "version": "0.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Nodejs Library for Cnab files",
   "keywords": [],
   "main": "dist/nodejs-cnab.umd.js",
   "module": "dist/nodejs-cnab.es5.js",
@@ -12,7 +12,7 @@
   "author": "Yuri Moreira Titi <yuri.titi@govbr.com.br>",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/banco-br/nodejs-cnab"
   },
   "license": "MIT",
   "engines": {
