@@ -1,8 +1,9 @@
 import * as pad from 'pad'
-const yaml = require('js-yaml')
-const fs = require('fs')
+import * as fs from 'fs'
+import * as yaml from 'js-yaml'
+// const yaml = require('js-yaml')
 
-const makeLine = function(layout: any, data: any) {
+export function makeLine(layout: any, data: any) {
   const object: any = {}
   if (layout) {
     let index = 0
@@ -24,7 +25,7 @@ const makeLine = function(layout: any, data: any) {
   return object
 }
 
-const readLine = function(layout: any, data: any) {
+export function readLine(layout: any, data: any) {
   let line = ''
   const object: any = {}
   if (layout) {
@@ -133,13 +134,6 @@ export function formatCurrency(value: string = '', integer: number = 0, decimal:
   return vals.join('')
 }
 
-const readYaml = function(filename: any) {
-  try {
-    return yaml.safeLoad(fs.readFileSync(filename, `utf8`))
-  } catch (e) {
-    console.error(`readYaml`, e)
-    return null
-  }
+export function readYaml(filename: string) {
+  return yaml.safeLoad(fs.readFileSync(filename, 'utf8'))
 }
-
-export { makeLine, readYaml, readLine }
