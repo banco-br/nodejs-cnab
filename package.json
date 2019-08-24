@@ -121,6 +121,7 @@
     "@banco-br/cnab_yaml": "^2.0.1",
     "brazilian-values": "^0.5.1",
     "dayjs": "^1.8.15",
-    "js-yaml": "^3.13.1"
+    "js-yaml": "^3.13.1",
+    "pad": "^3.2.0"
   }
 }
