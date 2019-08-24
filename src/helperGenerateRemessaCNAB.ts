@@ -5,7 +5,7 @@ const { isCNPJ, isCPF } = require('brazilian-values')
 const dayjs = require('dayjs')
 
 export function helperGenerateRemessaCNAB240(dadosGeracao: any, bankCode: any) {
-  const Return = []
+  const Return: any = []
 
   /**
    * Header - Arquivo
@@ -112,5 +112,5 @@ export function helperGenerateRemessaCNAB240(dadosGeracao: any, bankCode: any) {
 
   Return.push({ trailer_arquivo })
 
-  return Return.map(Row => generateRemessaCnab(Row, 240, bankCode)).join('\n')
+  return Return.map((Row: any) => generateRemessaCnab(Row, 240, bankCode)).join('\n')
 }

@@ -1,5 +1,5 @@
 const yaml = require('js-yaml')
-import * as fs from 'fs'
+const fs = require('fs')
 
 const makeLine = function(layout: any, data: any) {
   const object: any = {}

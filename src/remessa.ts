@@ -9,7 +9,7 @@ import { CNAB_YAML_DIR } from './const'
  */
 export const generateRemessaCnab = (files: any, cnabtype = 400, bankcode = '237') => {
   try {
-    const yamls = []
+    const yamls: any = []
     for (const key in files) {
       const value = files[key]
       if (value.forEach) {
@@ -29,11 +29,11 @@ export const generateRemessaCnab = (files: any, cnabtype = 400, bankcode = '237'
       }
     }
 
-    const infos = yamls.map((i, index) => {
+    const infos = yamls.map((i: any, index: any) => {
       return readLine(i.layout, i.data)
     })
 
-    const infosLine = infos.map(i => {
+    const infosLine = infos.map((i: any) => {
       return i.line
     })
 
