@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/banco-br/nodejs-cnab.git"
+    "url": "https://github.com/banco-br/nodejs-cnab"
   },
   "author": "Mario Mol <mariohmol@gmail.com>",
   "license": "ISC",
@@ -16,19 +16,21 @@
     "publish-npm": "npm publish"
   },
   "bugs": {
-    "url": "https://github.com/mariohmol/nodejs-cnab/issues"
+    "url": "https://github.com/banco-br/nodejs-cnab/issues"
   },
-  "homepage": "https://github.com/mariohmol/nodejs-cnab#readme",
+  "homepage": "https://github.com/banco-br/nodejs-cnab#readme",
   "dependencies": {
-    "@banco-br/cnab_yaml": "^2.0.0",
+    "@banco-br/cnab_yaml": "^2.0.1",
+    "brazilian-values": "^0.5.1",
+    "dayjs": "^1.8.15",
     "js-yaml": "^3.13.1"
   },
   "devDependencies": {
-    "@types/chai": "^4.1.7",
+    "@types/chai": "^4.2.0",
     "@types/mocha": "^5.2.7",
-    "@types/node": "^12.7.1",
+    "@types/node": "^12.7.2",
     "chai": "^4.2.0",
-    "mocha": "^5.2.0",
+    "mocha": "^6.2.0",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.3",
     "typings": "^2.1.1"
