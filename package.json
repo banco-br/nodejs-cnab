@@ -21,6 +21,8 @@
   "homepage": "https://github.com/mariohmol/nodejs-cnab#readme",
   "dependencies": {
     "@banco-br/cnab_yaml": "^2.0.0",
+    "brazilian-values": "^0.5.1",
+    "dayjs": "^1.8.15",
     "js-yaml": "^3.13.1"
   },
   "devDependencies": {
