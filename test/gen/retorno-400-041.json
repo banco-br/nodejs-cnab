@@ -1,0 +1,35 @@
+[
+  {
+    "codigo_cedente": "0000000000000",
+    "brancos01": "4628596",
+    "brancos02": "0160000000001                                                                                                                                                                                                                                                                          220514         ",
+    "numero_sequencial": "000001"
+  },
+  {
+    "codigo_cedente": "000002501229",
+    "especie_cobranca": "000046",
+    "brancos01": "93",
+    "nosso_numero": "00000000",
+    "nosso_numero_opcional": "0000000060",
+    "numero_contrato_blu": "0000000000000000000000",
+    "brancos02": "000",
+    "carteira": "5",
+    "nosso_numero_dup": "00000000000000000000",
+    "agencia_cobradora": "03830",
+    "valor_outras_despesas": "0000000000000",
+    "zeros01": "00000000000000000000000000",
+    "valor_mora_multa": "0000000000000",
+    "valor_outros_creditos": "0000000000000",
+    "brancos03": "   ",
+    "data_credito": "210516",
+    "brancos04": "             00000000000000              ",
+    "forma_pagamento": " ",
+    "canal_pagamento": " ",
+    "brancos05": "                                      ",
+    "motivo_ocorrencia": "          ",
+    "brancos06": "  "
+  },
+  {
+    "brancos01": "          000000010000000000150000000001          00000000000000000000000000500000010000000005000000000000000000000000000000000000000000000000000000000000000000000000000000000000000                                                                                                                                                                              00000000000000000000000         "
+  }
+]
