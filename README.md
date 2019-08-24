@@ -4,7 +4,7 @@
 
 Finally a nodejs lib for CNAB and bank communication in brazil.
 
-`npm i --save nodejs-cnab`
+`npm i --save @banco-br/nodejs-cnab`
 
 Working test example for Bradesco, needs work on other banks (see issues)
 
