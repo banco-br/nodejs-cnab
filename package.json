@@ -9,7 +9,7 @@
   "files": [
     "dist"
   ],
-  "author": "Yuri Moreira Titi <yuri.titi@govbr.com.br>",
+  "author": "Mario Mol <mariohmol@gmail.com>, Yuri Moreira Titi <ymoreiratiti@gmail.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/banco-br/nodejs-cnab"
