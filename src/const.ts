@@ -1,4 +1,6 @@
-export const CNAB_YAML_DIR = './node_modules/@banco-br/cnab_yaml';
+const { getInstalledPathSync } = require('get-installed-path')
+
+export const CNAB_YAML_DIR = getInstalledPathSync('@banco-br/cnab_yaml', { local: true })
 export const BANK = {
   bb: {
     code: '001',
@@ -57,4 +59,4 @@ export const BANK = {
       400: ['header_arquivo', 'detalhe', 'trailer_arquivo']
     }
   }
-};
+}
