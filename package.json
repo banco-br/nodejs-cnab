@@ -1,6 +1,6 @@
 {
   "name": "@banco-br/nodejs-cnab",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Nodejs Library for Cnab files",
   "keywords": [],
   "main": "dist/nodejs-cnab.umd.js",
