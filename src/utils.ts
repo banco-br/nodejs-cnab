@@ -53,11 +53,11 @@ const usePicture = function(item: any, value = '') {
   const { picture } = item
   if (picture.indexOf('V9') > 0) {
     const out = regexPicture(/9\((\w+?)\)/g, picture)
-    return formatCurrency(value, Number(out[0]), Number(out[1]))
+    return formatCurrency(Number(value), Number(out[0]), Number(out[1]))
   } else if (picture.startsWith('9')) {
     const out = regexPicture(/9\((\w+?)\)/g, picture)
     if (item.date_format) {
-      return formatDate(value, out[0]) // , item.date_format
+      return formatDate(value, out[0], item.date_format) // , item.date_format
     } else {
       return formatNumber(value, out[0])
     }
@@ -89,10 +89,7 @@ const regexPicture = (exp: any, picture: any) => {
  * acentuação gráfica (ex.: “Á”, “É”, “Ê”, etc) e os campos não utiliza dos deverão ser preenchidos com brancos.
  * */
 const formatText = function(value: any, size: any) {
-  while (value.length < size) {
-    value = value + ' '
-  }
-  return value
+  return pad(value.slice(0, size), size, ' ')
 }
 
 /*  Numérico (picture 9): alinhado à direita com zeros à esquerda e os campos não utilizados deverão ser preenchidos
@@ -102,33 +99,45 @@ const formatText = function(value: any, size: any) {
  * @param {*} value
  */
 const formatNumber = function(value: any, size: any) {
-  // value = value.replace(/[^0-9]/g, "")
   while (value.length < size) {
     value = '0' + value
   }
   return value
 }
 
-const formatDate = function(value: any, size: any) {
-  // if(!value){
-  //   return new Date()
-  // }
-  // value = value.replace(/[^0-9]/g, "")
+const formatDate = function(value: any, size: any, dateFormat: any) {
+  switch (dateFormat) {
+    case '%d%m%Y':
+      value = value.slice(0, 8)
+      break
+    case '%d%m%y':
+      value = value.slice(0, 4) + value.slice(6, 8)
+      break
+
+    default:
+      throw new Error('dateFormat inválido: ' + dateFormat)
+  }
+
   while (value.length < size) {
     value = '0' + value
   }
-  // date_format: '%d%m%y'
+
   return value
 }
 
-export function formatCurrency(value: string = '', integer: number = 0, decimal: number = 0) {
-  value = value ? value.toString().replace(/[.R$]/g, '') : ''
+export function formatCurrency(value: number = 0, integer: number = 0, decimal: number = 0) {
+  value = Number(value)
+  if (typeof value !== 'number') {
+    throw new Error('formatCurrency: ' + value + integer + decimal)
+  }
 
-  const vals = value.split(',')
+  //  Efetua o arredondamento
+  const vals = value.toFixed(decimal).split('.')
   vals[1] = vals[1] || ''
 
-  vals[0] = pad(Number(integer), vals[0].toString(), '0')
-  vals[1] = pad(vals[1].toString(), Number(decimal), '0')
+  //  Limita os caracteres
+  vals[0] = pad(Number(integer), vals[0].toString().slice(0, integer), '0')
+  vals[1] = pad(vals[1].toString().slice(0, decimal), Number(decimal), '0')
 
   return vals.join('')
 }
