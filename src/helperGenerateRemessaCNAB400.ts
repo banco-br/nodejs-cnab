@@ -3,7 +3,7 @@
 import { generateRemessaCnab } from './remessa'
 const { isCNPJ, isCPF } = require('brazilian-values')
 const dayjs = require('dayjs')
-import { sumBy } from 'lodash'
+const { sumBy } = require('lodash')
 
 export function helperGenerateRemessaCNAB400(dadosGeracao: any, bankCode: any) {
   const Return: any = []
