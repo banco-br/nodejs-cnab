@@ -58,7 +58,7 @@ export function helperGenerateRemessaCNAB240(dadosGeracao: any, bankCode: any) {
       nosso_numero: detalhe_segmento.nosso_numero,
       numero_documento: detalhe_segmento.numero_documento,
       vencimento: dayjs(detalhe_segmento.vencimento).format('DDMMYYYY'),
-      valor_titulo: detalhe_segmento.valor_titulo.toFixed(2).replace('.', ','),
+      valor_titulo: detalhe_segmento.valor_titulo,
       data_emissao: dayjs(detalhe_segmento.data_emissao).format('DDMMYYYY'),
       uso_empresa: detalhe_segmento.uso_empresa
     }
@@ -92,8 +92,6 @@ export function helperGenerateRemessaCNAB240(dadosGeracao: any, bankCode: any) {
   const valor_total_titulo_simples = dadosGeracao.detalhe_segmento
     .map((El: any) => El.valor_titulo)
     .reduce((curr: number, total: number) => total + curr, 0)
-    .toFixed(2)
-    .replace('.', ',')
 
   const trailer_lote = {
     qtde_registro_lote: dadosGeracao.detalhe_segmento.length * 2 + 2, // Soma todas as linhas Detalhe P/Q, Header Lote e Header Trailler

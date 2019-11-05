@@ -33,6 +33,8 @@ export function helperGenerateRemessaCNAB400(dadosGeracao: any, bankCode: any) {
     if (isCNPJ(detalhe_segmento.sacado_numero_inscricao)) sacado_codigo_inscricao = 2
 
     const detalhe = {
+      codigo_inscricao: isCNPJ(dadosGeracao.numero_inscricao) ? 2 : 1,
+      numero_inscricao: dadosGeracao.numero_inscricao,
       codigo_convenio: dadosGeracao.codigo_convenio,
       uso_empresa: detalhe_segmento.uso_empresa,
       mensagem: detalhe_segmento.mensagem,

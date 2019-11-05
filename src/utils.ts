@@ -114,6 +114,10 @@ const formatDate = function(value: any, size: any, dateFormat: any) {
       value = value.slice(0, 4) + value.slice(6, 8)
       break
 
+    case '%H%M%S':
+      value = value.slice(0, 8)
+      break
+
     default:
       throw new Error('dateFormat inválido: ' + dateFormat)
   }
